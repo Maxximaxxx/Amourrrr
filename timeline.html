@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Timelineeee</title>
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Parisienne', cursive;
+            background-image: url('https://cdn.pixabay.com/photo/2016/02/26/16/32/pattern-1223336_960_720.png'), 
+                url('https://cdn.pixabay.com/photo/2016/03/23/15/00/heart-1270609_960_720.png'); /* Lovely pattern background with hearts */
+            background-size: cover, auto;
+            background-repeat: repeat, no-repeat;
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            transition: background-color 0.5s ease; /* Smooth transition for background color change */
+        }
+
+        header {
+            background-color: rgba(255, 204, 229, 0.8); /* Semi-transparent pink header */
+            padding: 20px;
+            text-align: center;
+            border-bottom: 2px solid #ff9999;
+        }
+
+        h1 {
+            font-size: 3rem;
+            color: #333;
+            margin: 0;
+        }
+
+        nav {
+            background-color: rgba(255, 153, 153, 0.8); /* Semi-transparent pink navigation */
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        main {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .timeline-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .timeline-event {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .timeline-event .icon {
+            font-size: 2rem;
+            color: #ff6666;
+            margin-right: 20px;
+        }
+
+        .timeline-event .content {
+            border-left: 2px solid #ff9999;
+            padding-left: 20px;
+        }
+
+        .timeline-event .content h2 {
+            font-size: 2rem;
+            color: #ff6666;
+            margin: 0 0 10px;
+        }
+
+        .timeline-event .content p {
+            color: #666;
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .clock-container {
+            margin-top: 50px;
+            font-size: 2rem;
+            color: #ff6666;
+        }
+
+        /* Button style */
+        .change-bg-button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background-color: #ff9999;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-bottom: 20px;
+        }
+
+        .change-bg-button:hover {
+            background-color: #ff6666; /* Darker pink on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Love Timeline</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="adventures.html">Adventures Map</a></li>
+           <!-- <li><a href="scrapbook.html">Virtual Scrapbook</a></li> -->
+           <!-- <li><a href="messages.html">Personal Messages</a></li> -->
+        </ul>
+    </nav>
+
+    <main>
+        <div class="timeline-container">
+            <div class="timeline-event">
+                <i class="icon fas fa-heart"></i>
+                <div class="content">
+                    <h2>First Kiss</h2>
+                    <p>We shared our first kiss randomly when we felt like it...I dont know :')</p>
+                </div>
+            </div> 
+            <div class="timeline-event">
+                <i class="icon fas fa-heart"></i>
+                <div class="content">
+                    <h2>First Time</h2>
+                    <p>We had our first time when i actually felt like it and it felt awesome. Also if youre reading this and im nect to you, you have to fuvk me :))</p>
+                </div>
+            </div>               
+            <div class="timeline-event">
+                <i class="icon fas fa-heart"></i>
+                <div class="content">
+                    <h2>Met Each Other</h2>
+                    <p>We met for the first time and instantly felt a connection. I felt safe with her and instantly fell in love.</p>
+                </div>
+            </div>
+            <div class="timeline-event">
+                <i class="icon fas fa-heart"></i>
+                <div class="content">
+                    <h2>First Date</h2>
+                    <p>We didn't really have a first date but I knew she was the one for me.</p>
+                </div>
+            </div>
+            <!-- Add more timeline events as needed -->
+        </div>
+
+        <div class="clock-container" id="clock"></div>
+
+        <!-- Interactive Button -->
+        <button class="change-bg-button" onclick="changeStyles()">Make it GAY</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Our Love Journey. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Calculate the duration of the relationship
+        const startDate = new Date('2024-04-20'); // Replace with your actual start date
+        const currentDate = new Date();
+        const timeDifference = currentDate - startDate;
+
+        const oneDay = 24 * 60 * 60 * 1000; // hours * minutes * seconds * milliseconds
+        const days = Math.floor(timeDifference / oneDay);
+        const weeks = Math.floor(days / 7);
+        const months = Math.floor(days / 30);
+        const years = Math.floor(days / 365);
+
+        // Display the duration on the page
+        const clockContainer = document.getElementById('clock');
+        clockContainer.innerHTML = `
+            <p>Days: ${days}</p>
+            <p>Weeks: ${weeks}</p>
+            <p>Months: ${months}</p>
+            <p>Years: ${years}</p>
+        `;
+
+        // Function to change background color, font color, and icon color
+        function changeStyles() {
+            const body = document.querySelector('body');
+            const header = document.querySelector('header');
+            const nav = document.querySelector('nav');
+            const clockContainer = document.getElementById('clock');
+            const timelineIcons = document.querySelectorAll('.icon');
+            const timelineContent = document.querySelectorAll('.content');
+
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16); // Generate random color
+
+            body.style.backgroundColor = randomColor;
+            header.style.backgroundColor = `rgba(255, ${Math.floor(Math.random() * 100) + 100}, 229, 0.8)`; // Random pink tint
+            nav.style.backgroundColor = `rgba(255, ${Math.floor(Math.random() * 100) + 100}, 153, 0.8)`; // Random pink tint
+            clockContainer.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`; // Random font color for clock
+            timelineIcons.forEach(icon => {
+                icon.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`; // Random icon color
+            });
+            timelineContent.forEach(content => {
+                content.style.color = `#${Math.floor(Math.random()*16777215).toString(16)}`; // Random font color
+            });
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fun Facts</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap">
+    <style>
+        /* CSS styles remain the same */
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Fun Facts</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="timeline.html">Love Timeline</a></li>
+            <li><a href="adventures.html">Adventures Map</a></li>
+            <li><a href="scrapbook.html">Virtual Scrapbook</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section>
+            <h2>Fun Facts</h2>
+            <div class="fun-fact">
+                <p>Did you know?</p>
+                <p id="fun-fact-text">The shortest war in history lasted only 38 minutes between Britain and Zanzibar in 1896.</p>
+            </div>
+            <div id="countdown">00:00:05</div> <!-- Changed countdown to 5 seconds for testing -->
+            <button onclick="startCountdown()">Start Countdown</button>
+        </section>
+    </main>
+
+    <footer>
+        <p>Enjoy this fun fact!</p>
+    </footer>
+
+    <script>
+        function startCountdown() {
+            var seconds = 5; // Set initial countdown time
+            var countdownInterval = setInterval(function() {
+                seconds--;
+                document.getElementById("countdown").innerHTML = formatTime(seconds);
+
+                if (seconds === 0) {
+                    clearInterval(countdownInterval);
+                    sendSMS(); // Call function to send SMS when timer reaches 0
+                }
+            }, 1000);
+        }
+
+        function formatTime(seconds) {
+            var hours = Math.floor(seconds / 3600);
+            var minutes = Math.floor((seconds % 3600) / 60);
+            var remainingSeconds = seconds % 60;
+            return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${remainingSeconds.toString().padStart(2, '0')}`;
+        }
+
+        function sendSMS() {
+            // Call PHP script to send SMS
+            var xhr = new XMLHttpRequest();
+            xhr.open("GET", "send_sms.php", true);
+            xhr.send();
+        }
+    </script>
+</body>
+</html>
